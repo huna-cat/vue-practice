@@ -1,0 +1,77 @@
+<!doctype <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<body>
+
+    <nav id="navBar" class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">{{ title }}</a>
+        <div class="navber-icons">
+            <i class="fas fa-plus fa-lg navbar-add" @click="createNewTodoBar"></i>
+        </div>
+    </nav>
+    <!-- main -->
+    <div id="main" class="container-fluid">
+    
+    <div class="row">
+        <!-- todobar -->
+        <div class="col-sm-4 todo-bar">
+            <!-- タイトル -->
+            <div class="todo-bar-header">
+                <div contenteditable="true" class="todo-bar-title">
+                    <span class="align-middle">{{ header.title }}</span>
+                </div>
+            </div>
+
+            <div class="todo-bar-body">
+                <!-- todoアイテム -->
+                <div class="todo-item" v-for="(todo, idx) in todoItems">
+                    <!-- アイコン -->
+                    <div class="todo-icons">
+                        <span class="todo-icon todo-number">{{ idx + 1 }}</span>
+                        <!-- 削除ボタン -->
+                        <i class="fas fa-trash-alt todo-icon todo-remove" @click="removeTodo(idx)"></i>
+
+                        <!-- インフォメーションボタン -->
+                        <i class="fas fa-info todo-icon todo-unfold" @click="showTodoInfo(idx)"></i>
+                        
+                    </div>
+                    <!-- テキストエリア -->
+                    <div contenteditable="true" class="todo-text">
+                        <span class="align-middle">{{ todo.title }}</span>
+                    </div>
+                </div>
+                <div class="todo-add">
+                    <i class="fas fa-plus fa-lg" @click="addNewTodo"></i>
+                </div>
+            </div>
+        </div>
+
+        <div id="todoInfoLayer" v-if="isActive">
+            <div id="infoOverview">
+                <i class="fas fa-times todo-icon todo-remove" @click="remove()"></i>
+                <p>{{ title }}</p>
+                <p>{{ date }}</p>
+                <p>{{ text }}</p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<!-- JavaScript -->
+<script src="js/navbar.js"></script>
+<script src="js/info-overview.js"></script>
+<script src="js/todo-bar.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+
+</html>

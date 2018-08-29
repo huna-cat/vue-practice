@@ -1,0 +1,84 @@
+.todo-bar {
+    margin : 5px;
+}
+
+.todo-bar-header {
+    background-color : rgba(207, 24, 24, 0.966);
+    padding : 5px 0;
+    border : solid gainsboro 1px; 
+}
+
+.todo-bar-title {
+    margin : 5px;
+    color : white;
+    font-weight : bold;
+}
+
+.todo-bar-body {
+    background-color : whitesmoke;
+    border : solid gainsboro 1px; 
+}
+
+.todo-item {
+    background-color : rgb(255, 251, 251);
+    padding : 5px;
+    margin : 10px 5px;
+    border : solid gainsboro 1px;
+    vertical-align : middle;
+}
+
+.todo-add {
+    padding : 3px;
+    margin : 5px auto;
+    text-align: center;
+}
+
+.todo-icons {
+    border-bottom : solid whitesmoke 1px;
+    margin-bottom: 3px;
+}
+
+.todo-icon {
+    margin : 0 6px;
+}
+
+.todo-unfold {
+    float : right;
+}
+
+.todo-remove {
+    float : right;
+}
+
+#todoInfoLayer {
+    position : absolute;
+    top : 0px;
+    left : 0px;
+
+    width : 100%;
+    height : 100%;
+
+    background : rgba(10, 10, 10, 0.5);
+    z-index : 1;
+}
+
+#infoOverview {
+    position: relative;
+
+    top: 50%;
+    left : 20%;
+
+    width : 60%;
+
+    background :rgba(255, 255, 255, 1.0);
+    padding : 20px;
+    z-index : 2;
+}
+
+.navbar-icons {
+    float : right;
+}
+
+.navbar-add {
+    color : white;
+}
