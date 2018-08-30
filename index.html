@@ -18,58 +18,27 @@
             <i class="fas fa-plus fa-lg navbar-add" @click="createNewTodoBar"></i>
         </div>
     </nav>
-    <!-- main -->
+
+    <!-- ボデー -->
     <div id="main" class="container-fluid">
-    
-    <div class="row">
-        <!-- todobar -->
-        <div class="col-sm-4 todo-bar">
-            <!-- タイトル -->
-            <div class="todo-bar-header">
-                <div contenteditable="true" class="todo-bar-title">
-                    <span class="align-middle">{{ header.title }}</span>
-                </div>
-            </div>
-
-            <div class="todo-bar-body">
-                <!-- todoアイテム -->
-                <div class="todo-item" v-for="(todo, idx) in todoItems">
-                    <!-- アイコン -->
-                    <div class="todo-icons">
-                        <span class="todo-icon todo-number">{{ idx + 1 }}</span>
-                        <!-- 削除ボタン -->
-                        <i class="fas fa-trash-alt todo-icon todo-remove" @click="removeTodo(idx)"></i>
-
-                        <!-- インフォメーションボタン -->
-                        <i class="fas fa-info todo-icon todo-unfold" @click="showTodoInfo(idx)"></i>
-                        
-                    </div>
-                    <!-- テキストエリア -->
-                    <div contenteditable="true" class="todo-text">
-                        <span class="align-middle">{{ todo.title }}</span>
-                    </div>
-                </div>
-                <div class="todo-add">
-                    <i class="fas fa-plus fa-lg" @click="addNewTodo"></i>
-                </div>
-            </div>
-        </div>
-
-        <div id="todoInfoLayer" v-if="isActive">
-            <div id="infoOverview">
-                <i class="fas fa-times todo-icon todo-remove" @click="remove()"></i>
-                <p>{{ title }}</p>
-                <p>{{ date }}</p>
-                <p>{{ text }}</p>
-            </div>
-        </div>
+        <div class="row">
+            <todo-bar v-for="bar in bars" v-bind:key="bar.id"></todo-bar>
+        </div>    
     </div>
+    <!-- 隠しレイヤー -->
+    <div id="todoInfoLayer" v-if="isActive">
+        <div id="infoOverview">
+            <i class="fas fa-times todo-icon todo-remove" @click="remove()"></i>
+            <p>{{ title }}</p>
+            <p>{{ date }}</p>
+            <p>{{ text }}</p>
+        </div>
     </div>
 
 <!-- JavaScript -->
+<script src="js/component-test.js"></script>
 <script src="js/navbar.js"></script>
 <script src="js/info-overview.js"></script>
-<script src="js/todo-bar.js"></script>
 <script src="js/main.js"></script>
 
 </body>

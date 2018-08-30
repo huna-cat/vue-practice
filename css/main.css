@@ -2,7 +2,7 @@
     margin : 5px;
 }
 
-.todo-bar-header {
+.bar-header {
     background-color : rgba(207, 24, 24, 0.966);
     padding : 5px 0;
     border : solid gainsboro 1px; 
@@ -14,7 +14,7 @@
     font-weight : bold;
 }
 
-.todo-bar-body {
+.bar-body {
     background-color : whitesmoke;
     border : solid gainsboro 1px; 
 }
