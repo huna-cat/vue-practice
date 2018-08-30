@@ -1,14 +1,15 @@
-/*
 var main = new Vue({
     el : "#main",
     data : {
-        todoBars : []
-    }, 
+        idx : 0,
+        bars : []
+    },
     methods : {
-        createNewTodoBar : function() {
-            this.todoBars.push(new Vue(todoBar))
-            console.log(this.todoBars[0].todoItems[0].title);
+        add : function() {
+            this.bars.push({
+                idx : this.idx
+            })
+            this.idx++;
         }
     }
-});
-*/
+})

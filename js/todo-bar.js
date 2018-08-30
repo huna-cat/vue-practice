@@ -1,37 +1,52 @@
-class TodoHeader {
-    constructor() {
-        this.color = "red";
-        this.title = ""
-    }
-}
+Vue.component('bar-header', {
+    props : ['title'],
+    template :
+        '<div class="bar-header">\
+            <div contenteditable="true" class="todo-bar-title">\
+                <span class="align-middle">{{ title }}</span>\
+            </div>\
+        </div>'
+})
 
-class TodoItem {
-    constructor() {
-        this.title = 'input title';
-        this.date = new Date();
-        this.text = 'overview';
-    }
-
-    showTodoInfo() {
-        infoOverView.enable(this);
-    }
-}
-
-var todoBar = new Vue({
-    el: '.todo-bar', 
-    data : {
-        header : new TodoHeader(),
-        todoItems : []
-    },
+Vue.component('bar-body', {
+    data : function() {
+        return {
+            idx : 0,
+            todos : []
+        }
+    }, 
+    template : 
+        '<div class="bar-body">\
+            <todo-item v-for="(todo, idx) in todos" v-bind:key=idx v-bind:idx="idx" v-bind:title="todo.title" v-on:remove="remove" v-on:show="show"></todo-item>\
+            <todo-item-add v-on:add="add"></todo-item-add>\
+        </div>',
     methods : {
-        addNewTodo : function() {
-            this.todoItems.push(new TodoItem());
+        remove : function(idx) {
+            this.todos.splice(idx, 1)
         },
-        removeTodo : function(idx) {
-            this.todoItems.splice(idx, 1);
+        show : function (idx) {
+            window.alert("show" + idx)
         },
-        showTodoInfo : function(idx) {
-            this.todoItems[idx].showTodoInfo();
+        add : function() {
+            this.todos.push({
+                idx : this.idx,
+                title : "title " + this.idx 
+            })
+            this.idx++;
         }
     }
-});
+})
+
+Vue.component('todo-bar', {
+    props : [],
+    data : function() {
+        return {
+            title : "component"
+        }
+    },
+    template : 
+        '<div class="todo-bar col-sm-3">\
+            <bar-header v-bind:title="title"></bar-header>\
+            <bar-body></bar-body>\
+        </div>'
+})
